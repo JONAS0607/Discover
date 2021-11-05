@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TABLES</title>
+    <style>
+      table {
+        background-color: #999;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TABELAS</h1>
+    <h2>Tabela Simples</h2>
+    <table>
+      <caption>
+        Pessoas por Idade
+      </caption>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Gênero</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JONAS</td>
+          <td>34</td>
+          <td>M</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>TOTAL:</td>
+          <td>34</td>
+          <td>1</td>
+        </tr>
+      </tfoot>
+    </table>
+    <h2>Tabela Complexa</h2>
+    <table>
+      <caption>
+        Produzidos x Vendidos por Loja
+      </caption>
+      <colgroup>
+        <col span="1" style="background-color: green;">
+        <col span="2" style="background-color: red;">
+        <col span="2" style="background-color: blue;">
+        
+      </colgroup>
+      <thead>
+        <tr>
+          <th rowspan="2"></th>
+          <th colspan="2" scope="colgroup">Jonas</th>
+          <th colspan="2" scope="colgroup">Sabrina</th>
+        </tr>
+        <tr>
+          <th scope="col">Produzidos</th>
+          <th scope="col">Vendidos</th>
+          <th scope="col">Produzidos</th>
+          <th scope="col">Vendidos</th>
+        </tr>
+      </thead>
+      <tbody>
+          <th scope="row">Vassoura</th>
+          <td>100</td>
+          <td>150</td>
+          <td>200</td>
+          <td>250</td>
+        </tr>
+        <tr>
+          <th scope="row">Balde</th>
+          <td>10</td>
+          <td>15</td>
+          <td>20</td>
+          <td>25</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">TOTAL:</th>
+          <td>110</td>
+          <td>165</td>
+          <td>220</td>
+          <td>275</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
