@@ -1,2 +1,3 @@
 # 📌 O início da jornada "DEV"
-*Cada modulo *
+
+_Cada modulo está dentro da pasta Discover_
