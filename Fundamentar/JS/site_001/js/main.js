@@ -55,15 +55,10 @@ for (let i = 0; i <= valores.length; i++) {
       }
       var tableBody = doTableBody([back(bichos),'black'], i, j, k);
 
-      switch (bichos) {
-        case "leão":
-          rename(bichos);
-          break;
-        case "macaco":
-          rename(bichos);
-          break;
-      }
-
+      
+      bichos ? rename(bichos) : "";
+      
+      
       if (cont % 25 == 0) {
         root.innerHTML += `     
         ${tableBody} 
