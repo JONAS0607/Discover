@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>FizzBuzz</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+
+			width: 100%;
+			margin: 0 auto;
+			display: grid;
+			justify-content: center;
+			height: 10rem;
+		}
+
+		div {
+			margin-top: 2rem;
+			border: 1px solid black;
+			background-color: #ddd;
+			padding: 1rem 2rem;
+			height: 10rem;
+
+
+		}
+
+		h1 {
+			margin-top: 1rem;
+		}
+
+		span {
+			color: #4d98d0;
+			font-size: 2rem;
+		}
+
+		input,
+		button {
+			margin-top: 1rem;
+			height: 3rem;
+			font-size: 2rem;
+
+		}
+
+		input {
+			padding-left: 1rem;
+
+		}
+
+		button {
+			padding: 0 1rem;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<input type="text" id="value" />
+
+		<button type="button" onclick="testValue()">Testar</button>
+
+		<h1>FizBuzz? : <span id="showScreem"></span>
+	</div>
+	<div>
+		<p>
+			Respostas esperadas dos número divisiveis <br>
+			Por 5 e 3 : FizzBuzz <br>
+			Por 3 : Fizz<br>
+			Por 5 : Buzz<br>
+			Letras e frases: Não é número! <br>
+			Não divisivel : retorna o mesmo valor digitado
+		</p>
+	</div>
+
+
+
+
+	<script src="./script.js"></script>
+</body>
+
+</html>
