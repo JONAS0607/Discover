@@ -2,7 +2,7 @@ var LEFT = 37,
 	UP = 38,
 	RIGHT = 39,
 	DOWN = 40,
-	SIZE = 20,
+	SIZE = 50,
 	pos_X = 1,
 	pos_Y = 1,
 	objColor = '#00f';
@@ -31,8 +31,8 @@ function collision() {
 		pos_Y < block_Y + SIZE
 	) {
 		// alert('bateu no bloco!');
+		updateBlock(-1, -1);
 
-		updateBlock(-15, -15);
 		objColor = '#f00';
 	} else {
 		objColor = '#00f';

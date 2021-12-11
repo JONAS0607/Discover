@@ -1,14 +1,27 @@
-import modifier from '../modules/modifiers.js';
-// import ingredients from '../modules/ingredients.js';
-import salads from '../modules/salads.js';
-var ingredients = ['mel', 'água', 'sal', 'mostarda'];
+import modifier from './modules/modifiers.js';
+import ingredients from './modules/ingredients.js';
 
-modifier.capitalize_new(ingredients, 'name');
+let ingredientesCapitalizados = modifier.captalize(ingredients, 'nome');
+console.log(ingredientesCapitalizados);
+let ingredientesOrdenados = modifier.ordenar(ingredientesCapitalizados, 'nome');
+let conteinerIngredientes = document.getElementById('container-ingredientes');
 
-// var result_capitalize = change.capitalize(ingredients);
-// var result_order = change.order(result_capitalize);
-// var upper_case = change.upper_case(result_capitalize);
+for (let ingrediente of ingredientesOrdenados) {
+	let textoHTML = `
+      <div class="ingredientes">
+        <img src="./img/${ingrediente.img}" alt="Foto do ${ingrediente.nome}">
+        <p class="nome-ingrediente">${ingrediente.nome}</p>
+      </div>
+  `;
 
-// console.log(salads);
-// console.log(typeof salads);
-// console.log(Array.isArray(salads));
+	conteinerIngredientes.innerHTML += textoHTML;
+}
+
+/**
+ *
+ *    <div class="ingredientes">
+ *       <img src="./img/agriao.png" alt="Foto do Agrião">
+ *       <p class="nome-ingrediente">Agrião</p>
+ *    </div>
+ *
+ */
