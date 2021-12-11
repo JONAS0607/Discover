@@ -1,0 +1,19 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  width: 90vw;
+  height: 90vh;
+  border: 5px solid blue;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+canvas{
+  width: 70%; 
+  height: 70%; 
+  border: 1px solid black;
+}
