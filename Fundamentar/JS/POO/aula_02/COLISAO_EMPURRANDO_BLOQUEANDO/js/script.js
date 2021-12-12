@@ -22,13 +22,15 @@
 
 	//Objetos
 	var character = new Sprite(10, 10, 20, 15, '#00f');
-	character.speed = 10;
+	character.speed = 4;
 
-	var block_1 = new Sprite(100, cnv.height - 50, 30, 100, '#0ff');
-	var block_2 = new Sprite(200, cnv.height - 70, 30, 100, '#92f');
+	var block_1 = new Sprite(70, 50, 80, 50, '#0ff');
+	var block_2 = new Sprite(200, 70, 70, 50, '#92f');
 	sprites.push(character);
 	sprites.push(block_1);
 	sprites.push(block_2);
+	blocks.push(block_1);
+	blocks.push(block_2);
 
 	//Entradas
 	window.addEventListener('keydown', keyDownHandler, false);
@@ -87,6 +89,16 @@
 			Math.min(cnv.height - character.height - 1, character.pos_y),
 		);
 		//Colisões
+		for (let i in blocks) {
+			var blk = blocks[i];
+			if (blk.visible) {
+				if (character.color == '#0f0') {
+					block_rect(blk, character);
+				} else {
+					block_rect(character, blk);
+				}
+			}
+		}
 	}
 	function render() {
 		ctx.clearRect(0, 0, cnv.width, cnv.height);
