@@ -4,6 +4,13 @@ var LEFT = 37,
 	RIGHT = 39,
 	PG_UP = 33,
 	PG_DOWN = 34;
+var mv_left = false,
+	mv_right = false,
+	mv_up = false,
+	mv_down = false,
+	zoom_in = false,
+	zoom_out = false;
+var speed = 2;
 
 var cnv = document.querySelector('canvas');
 var ctx = cnv.getContext('2d');
@@ -29,7 +36,7 @@ mapa.src = './images/map.png';
 mapa.onload = loop();
 
 window.addEventListener('keydown', keyDownHandler, false);
-// window.addEventListener('keyup', keyUpHandler, false);
+window.addEventListener('keyup', keyUpHandler, false);
 
 function mapaInfo(status, complemento = null) {
 	if (status == 'erro') {
@@ -43,11 +50,10 @@ function mapaInfo(status, complemento = null) {
 	}
 }
 function limiteMapaDown(value_x_y, limite, plus) {
-	src_y += value_x_y;
+	src_y = value_x_y;
 	if (size > 70 && size <= 220) {
 		let cont = 220 - size;
 		cont /= 15;
-		console.log(`contador ${cont}`);
 		src_y > limite
 			? ((src_y = limite + plus + 15 * cont), mapaInfo('erro'))
 			: mapaInfo('normal');
@@ -56,66 +62,53 @@ function limiteMapaDown(value_x_y, limite, plus) {
 	}
 }
 function limiteMapaRight(value_x_y, limite, plus) {
-	src_x += value_x_y;
+	src_x = value_x_y;
 	if (size > 70 && size <= 220) {
-		console.log(`SIZE - X : ${size}`);
 		let cont = 220 - size;
 		cont /= 15;
-		console.log(`contador ${cont}`);
 		src_x > limite
 			? ((src_x = limite + plus + cont * 15), mapaInfo('erro'))
 			: mapaInfo('normal');
 	} else {
 		src_x > 575 ? ((src_x = 600), mapaInfo('erro')) : mapaInfo('normal');
 	}
-
-	console.log(`srcRight : ${src_x}`);
 }
-function moviments(e, value_x_y, value_up_down) {
+function movements(e, status) {
 	var key = e.keyCode;
 
 	switch (key) {
 		case LEFT:
-			src_x -= value_x_y;
-			// console.log(`srcLeft : ${src_x}`);
-			src_x < 25 ? ((src_x = 0), mapaInfo('erro')) : mapaInfo('normal');
+			mv_left = status;
 
 			break;
 		case RIGHT:
-			limiteMapaRight(value_x_y, 400, 50);
+			mv_right = status;
+
 			break;
 		case UP:
-			src_y -= value_x_y;
-			// console.log(`srcUp : ${src_y}`);
-			src_y < 25 ? ((src_y = 0), mapaInfo('erro')) : mapaInfo('normal');
+			mv_up = status;
 
 			break;
 		case DOWN:
-			limiteMapaDown(value_up_down, 400, 30);
+			mv_down = status;
 
 			break;
 		case PG_DOWN:
-			// limiteMapaRight(value_x_y, 400, 50);
-			// limiteMapaDown(value_x_y, 400, 30);
-			size += value_up_down;
-			size > 220
-				? ((size = 220), mapaInfo('erro', 'expande'))
-				: mapaInfo('normal');
-			// console.log(`SIZE -> ${size}`);
+			zoom_out = status;
 
 			break;
 		case PG_UP:
-			size -= value_up_down;
-			size < 70
-				? ((size = 70), mapaInfo('erro', 'aproxima'))
-				: mapaInfo('normal');
-			// console.log(`SIZE -> ${size}`);
+			zoom_in = status;
+
 			break;
 	}
 }
 
 function keyDownHandler(e) {
-	moviments(e, 25, 15);
+	movements(e, true);
+}
+function keyUpHandler(e) {
+	movements(e, false);
 }
 
 function render() {
@@ -124,9 +117,41 @@ function render() {
 	ctx.drawImage(mapa, src_x, src_y, size, size, 0, 0, cnv.width, cnv.height);
 }
 
-function update() {}
+function update() {
+	if (mv_left) {
+		src_x -= speed;
+		src_x < 25 ? ((src_x = 0), mapaInfo('erro')) : mapaInfo('normal');
+	}
+	if (mv_right) {
+		src_x += speed;
+		limiteMapaRight(src_x, 400, 50);
+	}
+	if (mv_up) {
+		src_y -= speed;
+		src_y < 25 ? ((src_y = 0), mapaInfo('erro')) : mapaInfo('normal');
+	}
+	if (mv_down) {
+		src_y += speed;
+		limiteMapaDown(src_y, 400, 30);
+	}
+	if (zoom_in) {
+		size -= speed;
+		size < 70
+			? ((size = 70), mapaInfo('erro', 'aproxima'))
+			: mapaInfo('normal');
+		// console.log(`SIZE -> ${size}`);
+	}
+	if (zoom_out) {
+		size += speed;
+		size > 220
+			? ((size = 220), mapaInfo('erro', 'expande'))
+			: mapaInfo('normal');
+		// console.log(`SIZE -> ${size}`);
+	}
+}
 
 function loop() {
 	requestAnimationFrame(loop, cnv);
+	update();
 	render();
 }
