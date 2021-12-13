@@ -25,6 +25,7 @@ function Sprite(img) {
 			this.width,
 			this.height,
 		);
+
 		this.animation();
 	};
 	//Movimentos
@@ -58,3 +59,11 @@ function Sprite(img) {
 		}
 	};
 }
+var Info = function (x, y, w, h, color) {
+	this.pos_x = pos_x;
+	this.pos_y = pos_y;
+	this.width = width;
+	this.height = height;
+	this.color = color;
+	this.visible = true;
+};
