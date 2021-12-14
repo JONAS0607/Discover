@@ -8,7 +8,7 @@ window.onload = function () {
 	var spriteSheet = new Image();
 
 	
-	spriteSheet.src = './images/img.png';
+	spriteSheet.src = './images/male_citzen.png';
 
 	var zezim = new Sprite(spriteSheet);
 
@@ -71,19 +71,19 @@ window.onload = function () {
 		//limite da camera
 		if (camera.x < 0) {
 			camera.x = 0;
-			zezim.pos_x<0?zezim.pos_x=0:'';			
+			zezim.pos_x < 0 ? (zezim.pos_x = 0) : '';
 		}
 		if (camera.x + camera.width > game_world.width) {
 			camera.x = game_world.width - camera.width;
-			zezim.pos_x > 650 ? zezim.pos_x = 650:'';	
+			zezim.pos_x > 650 ? (zezim.pos_x = 650) : '';
 		}
 		if (camera.y < 0) {
 			camera.y = 0;
-			zezim.pos_y<0?zezim.pos_y=0:'';	
+			zezim.pos_y < 0 ? (zezim.pos_y = 0) : '';
 		}
 		if (camera.y + camera.height > game_world.height) {
 			camera.y = game_world.height - camera.height;
-			zezim.pos_y > 632 ? zezim.pos_y = 632:'';	
+			zezim.pos_y > 632 ? (zezim.pos_y = 632) : '';
 		}
 		zezim.move();
 
@@ -91,10 +91,9 @@ window.onload = function () {
 	}
 
 	//OBJETOS
-	
 
 	var sprites = [];
-	
+
 	var game_world = {
 		img: scene,
 		x: 0,

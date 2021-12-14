@@ -35,11 +35,11 @@
   font-size: 1.2rem;
 }
 img{
-  /* width: 200%;
-  height: 200%; */
+  width: 200%;
+  height: 200%;
   position: fixed;
   z-index: -1;
-  filter: opacity(.5);
+  filter: opacity(.15);
 }
 
 section{  
