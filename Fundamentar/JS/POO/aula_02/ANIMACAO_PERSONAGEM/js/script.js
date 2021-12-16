@@ -46,7 +46,6 @@ window.onload = function () {
 
 	spriteSheet.onload = function () {
 		zezim.pos_x = 120;
-
 		zezim.pos_y = 40;
 		init();
 	};

@@ -7,7 +7,6 @@ window.onload = function () {
 	var ctx = cnv.getContext('2d');
 	var spriteSheet = new Image();
 
-	
 	spriteSheet.src = './images/male_citzen.png';
 
 	var zezim = new Sprite(spriteSheet);
@@ -104,8 +103,6 @@ window.onload = function () {
 	sprites.push(game_world);
 	sprites.push(zezim);
 
-
-
 	var camera = {
 		x: 0,
 		y: 0,
@@ -148,32 +145,29 @@ window.onload = function () {
 
 		ctx.restore();
 
-	drawTextBG(ctx,` pos - x : ${zezim.pos_x} `,12,1,1,'#000','#fff')
-	drawTextBG(ctx,` pos - y : ${zezim.pos_y} `,12,1,12,'#00f','#fff')
-		
-		
+		drawTextBG(ctx, ` pos - x : ${zezim.pos_x} `, 12, 1, 1, '#000', '#fff');
+		drawTextBG(ctx, ` pos - y : ${zezim.pos_y} `, 12, 1, 12, '#00f', '#fff');
 	}
-	function drawTextBG(ctx, txt, font, x, y,background,color) {
-    /// lets save current state as we make a lot of changes        
-    ctx.save();
-    /// set font
-    ctx.font = `bold ${font}px Arial`;
-    /// draw text from top - makes life easier at the moment
-    ctx.textBaseline = 'top';
-    /// color for background
-    ctx.fillStyle = background;    
-    /// get width of text
-    var width = ctx.measureText(txt).width;
-    /// draw background rect assuming height of font
-    ctx.fillRect(x, y, width, parseInt(font, 10));    
-    /// text color
-    ctx.fillStyle = color;
-    /// draw text on top
-    ctx.fillText(txt, x, y);    
-    /// restore original state
-    ctx.restore();
-}
-	
+	function drawTextBG(ctx, txt, font, x, y, background, color) {
+		/// lets save current state as we make a lot of changes
+		ctx.save();
+		/// set font
+		ctx.font = `bold ${font}px Arial`;
+		/// draw text from top - makes life easier at the moment
+		ctx.textBaseline = 'top';
+		/// color for background
+		ctx.fillStyle = background;
+		/// get width of text
+		var width = ctx.measureText(txt).width;
+		/// draw background rect assuming height of font
+		ctx.fillRect(x, y, width, parseInt(font, 10));
+		/// text color
+		ctx.fillStyle = color;
+		/// draw text on top
+		ctx.fillText(txt, x, y);
+		/// restore original state
+		ctx.restore();
+	}
 
 	//centralizar personagem
 	zezim.pos_x = (game_world.width - zezim.width) / 2;
@@ -187,4 +181,4 @@ window.onload = function () {
 		draw();
 		update();
 	}
-};;
+};
