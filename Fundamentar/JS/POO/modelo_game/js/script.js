@@ -1,4 +1,4 @@
-(function () {
+windown.onload = function () {
 	const cnv = document.getElementById('canvas');
 	const ctx = cnv.getContext('2d');
 
@@ -11,4 +11,4 @@
 	function render() {}
 
 	loop();
-});
+};
