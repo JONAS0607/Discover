@@ -1,18 +1,15 @@
-function collide(s1,s2){
+function collide(s1, s2) {
 	var hit = false;
-	
-	//calcula a dinstância entre o centro dos sprites
-	var vetX = s1.centerX() - s2.centerX();
-	var vetY = s1.centerY() - s2.centerY();
-	
-	//armazenar as somas das metades dos sprites na largura e altura
-	var sumHalfWidth = s1.halfWidth() + s2.halfWidth();
-	var sumHalfHeight = s1.halfHeight() + s2.halfHeight();
-	
+	//calcula a distancia entre o centro dos sprites
+	var vetX = s1.center_x() - s2.center_x();
+	var vetY = s1.center_y() - s2.center_y();
+	// soma das metades
+	var sum_half_w = s1.half_w() + s2.half_w();
+	var sum_half_h = s1.half_h() + s2.half_h();
 	//verifica se houve colisão
-	if(Math.abs(vetX) < sumHalfWidth && Math.abs(vetY) < sumHalfHeight){
+
+	if (Math.abs(vetX) < sum_half_w && Math.abs(vetY) < sum_half_h) {
 		hit = true;
 	}
-	
 	return hit;
 }
