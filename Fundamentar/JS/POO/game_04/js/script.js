@@ -29,8 +29,8 @@
 		message(ctx, 10, 30, `player x : ${player.x}`, 25, '#000');
 		message(ctx, 10, 60, `player y : ${player.y}`, 25, '#000');
 		message(ctx, 10, 90, `player vy : ${player.vy} `, 25, '#000');
-		ctx.restore();
 		wall_collision();
+		ctx.restore();
 	}
 	loop();
 })();

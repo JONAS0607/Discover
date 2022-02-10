@@ -1,4 +1,21 @@
 {
+  "users": [
+    {
+      "id": 2,
+      "name": "Nicolle",
+      "age": 5
+    },
+    {
+      "id": 3,
+      "name": "Sabrina",
+      "age": 26
+    },
+    {
+      "id": 4,
+      "name": "Larissa",
+      "age": 19
+    }
+  ],
   "posts": [
     {
       "id": 1,
@@ -11,17 +28,9 @@
       "id": 1,
       "body": "some comment",
       "postId": 1
-    },
-    {
-      "id": 2,
-      "body": "some comment two",
-      "postId": 2
     }
   ],
   "profile": {
-    "name": "typicode"
-  },
-  "status": {
-    "on-line": true
+    "name": "Ferminando"
   }
 }
